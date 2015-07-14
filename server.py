@@ -16,7 +16,11 @@ def get_synonyms(clue):
 def get_synonyms_with_length(clue, length):
     return jsonify(xord_wrapper.lookup_synonyms_with_length(clue, length))
 
+@app.route("/synonyms/<clue>/<string:pattern>", methods = ['GET'])
+def get_synonyms_with_pattern(clue, pattern):
+    return jsonify(xord_wrapper.lookup_synonyms(clue, pattern))
+
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     app.run()
 
